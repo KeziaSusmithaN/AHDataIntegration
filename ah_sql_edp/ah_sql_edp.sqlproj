@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ah_sql_edp</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{048ac487-66b4-4ede-ab64-00cb4f509bd5}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ah_sql_edp</RootNamespace>
+    <AssemblyName>ah_sql_edp</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="log\" />
+    <Folder Include="log\Tables\" />
+    <Folder Include="ctrl\" />
+    <Folder Include="ctrl\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="ctrl\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="log\Stored Procedures\" />
+    <Folder Include="ctrl\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\CernerRCI_PKList.sql" />
+    <Build Include="dbo\Tables\CernerPIC_PKList.sql" />
+    <Build Include="log\Tables\LogBatchdetail.sql" />
+    <Build Include="log\Tables\DataQualityLog.sql" />
+    <Build Include="log\Tables\PipelineExecutionLog.sql" />
+    <Build Include="ctrl\Tables\SourceObject.sql" />
+    <Build Include="ctrl\Tables\Stage_SourceObject.sql" />
+    <Build Include="ctrl\Tables\RuleMaster.sql" />
+    <Build Include="ctrl\Tables\FileFormat.sql" />
+    <Build Include="ctrl\Tables\EmailAlertRecipients.sql" />
+    <Build Include="ctrl\Tables\BusinessFunction.sql" />
+    <Build Include="ctrl\Tables\SourceObjectImportLog.sql" />
+    <Build Include="ctrl\Tables\AttributeDQCheck.sql" />
+    <Build Include="ctrl\Tables\SourceObjectMetaData.sql" />
+    <Build Include="ctrl\Tables\SourceConnection.sql" />
+    <Build Include="ctrl\Tables\DQRuleDefinition.sql" />
+    <Build Include="ctrl\Tables\SourceObjectAttribute.sql" />
+    <Build Include="ctrl\Tables\Stage_SourceObjectAttribute.sql" />
+    <Build Include="ctrl\Tables\Stage_SourceObjectImportLog.sql" />
+    <Build Include="ctrl\Tables\EDWTableTransformLoad.sql" />
+    <Build Include="ctrl\Tables\Configuration_Details.sql" />
+    <Build Include="ctrl\Tables\Stage_AttributeDQCheck.sql" />
+    <Build Include="Security\AH Azure DNA Contributors.sql" />
+    <Build Include="ctrl\Functions\fnGetListOfVendorFiles.sql" />
+    <Build Include="ctrl\Functions\fnGetODSSourceObjects.sql" />
+    <Build Include="ctrl\Functions\fnGetSourceObjectMetaData.sql" />
+    <Build Include="ctrl\Functions\fnGetEDWSourceObjects.sql" />
+    <Build Include="ctrl\Functions\fnGetListOfSourceObjects.sql" />
+    <Build Include="dbo\Stored Procedures\uspFetchDataFromBenchMarkeFieldValue.sql" />
+    <Build Include="log\Stored Procedures\uspUpsertPipelineExecutionLog.sql" />
+    <Build Include="log\Stored Procedures\uspUpdateLogBatchDetails.sql" />
+    <Build Include="log\Stored Procedures\uspSourceObjectDetailsMultiple.sql" />
+    <Build Include="log\Stored Procedures\uspSourceObjectDetails.sql" />
+    <Build Include="log\Stored Procedures\uspLoadStage_AttributeDQCheck.sql" />
+    <Build Include="log\Stored Procedures\uspInsertLogBatchDetails.sql" />
+    <Build Include="log\Stored Procedures\uspInsertDataQualityLogDetails.sql" />
+    <Build Include="log\Stored Procedures\uspDropRuleDefEntity.sql" />
+    <Build Include="ctrl\Stored Procedures\uspLoadSourceObject.sql" />
+    <Build Include="ctrl\Stored Procedures\UpsertSourceObjectImportLog.sql" />
+    <Build Include="ctrl\Stored Procedures\uspLoadSourceObjectAttribute.sql" />
+    <Build Include="Security\log.sql" />
+    <Build Include="Security\Dem.sql" />
+    <Build Include="Security\ctrl.sql" />
+    <Build Include="Security\aidqctrl.sql" />
+  </ItemGroup>
+</Project>
